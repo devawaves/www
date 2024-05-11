@@ -1,0 +1,46 @@
+name: build website
+
+on:
+  pull_request:
+    types:
+      - closed
+    paths:
+      - VERSION
+    branches: prod
+  workflow_dispatch: null
+  push:
+    branches: prod
+    paths:
+      - VERSION
+    tags-ignore:
+      - '*'
+
+jobs:
+  build:
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
+    steps:
+      - name: checkout code
+        uses: actions/checkout@main
+      - name: log into ghcr
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+      - name: build all docker images
+        run: |
+          docker build ./date --tag ghcr.io/devessa/www-date:$(cat VERSION)
+          docker build ./nginx --tag ghcr.io/devessa/www-nginx:$(cat VERSION)
+      - name: publish all docker images
+        run: |
+          docker tag ghcr.io/devessa/www-date:$(cat VERSION) ghcr.io/devessa/www-date:latest
+          docker push ghcr.io/devessa/www-date:$(cat VERSION)
+          docker push ghcr.io/devessa/www-date:latest
+
+          docker tag ghcr.io/devessa/www-nginx:$(cat VERSION) ghcr.io/devessa/www-lom:latest
+          docker push ghcr.io/devessa/www-nginx:$(cat VERSION)
+          docker push ghcr.io/devessa/www-nginx:latest
