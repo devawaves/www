@@ -8,22 +8,22 @@ importers:
 
   .:
     dependencies:
-      '@types/node':
-        specifier: ^20.12.11
-        version: 20.12.11
       dayjs:
         specifier: ^1.11.11
         version: 1.11.11
       fastify:
         specifier: ^4.27.0
         version: 4.27.0
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
     devDependencies:
+      '@types/node':
+        specifier: ^20.12.11
+        version: 20.12.11
       pino-pretty:
         specifier: ^11.0.0
         version: 11.0.0
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
 
 packages:
 
