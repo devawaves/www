@@ -41,6 +41,6 @@ jobs:
           docker push ghcr.io/devessa/www-date:$(cat VERSION)
           docker push ghcr.io/devessa/www-date:latest
 
-          docker tag ghcr.io/devessa/www-nginx:$(cat VERSION) ghcr.io/devessa/www-lom:latest
+          docker tag ghcr.io/devessa/www-nginx:$(cat VERSION) ghcr.io/devessa/www-nginx:latest
           docker push ghcr.io/devessa/www-nginx:$(cat VERSION)
           docker push ghcr.io/devessa/www-nginx:latest
