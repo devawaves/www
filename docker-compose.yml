@@ -2,19 +2,13 @@ version: "3"
 
 services:
   nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    image: nginx/latest
+    image: ghcr.io/devessa/www-nginx:latest
     ports:
       - 80:80
     container_name: nginx
     restart: always
   date:
-    build:
-      context: ./date
-      dockerfile: Dockerfile
-    image: date/latest
+    image: ghcr.io/devessa/www-date:latest
     container_name: date
     restart: always
     environment:
