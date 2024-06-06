@@ -1,12 +1,6 @@
 name: build website
 
 on:
-  pull_request:
-    types:
-      - closed
-    paths:
-      - VERSION
-    branches: prod
   workflow_dispatch: null
   push:
     branches: prod
@@ -17,7 +11,7 @@ on:
 
 jobs:
   build:
-    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' || github.event_name == 'push'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       packages: write
