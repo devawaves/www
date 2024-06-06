@@ -3,7 +3,7 @@ name: build website
 on:
   workflow_dispatch: null
   push:
-    branches: prod
+    branches: dev
     paths:
       - VERSION
     tags-ignore:
