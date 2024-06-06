@@ -13,3 +13,9 @@ services:
     restart: always
     environment:
       NODE_ENV: production
+  svelte:
+    image: ghcr.io/devessa/www-svelte:latest
+    container_name: svelte
+    restart: always
+    environment:
+      NODE_ENV: production

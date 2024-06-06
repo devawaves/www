@@ -35,6 +35,7 @@ jobs:
         run: |
           docker build ./date --tag ghcr.io/devessa/www-date:$(cat VERSION)
           docker build ./nginx --tag ghcr.io/devessa/www-nginx:$(cat VERSION)
+          docker build ./svelte --tag ghcr.io/devessa/www-svelte:$(cat VERSION)
       - name: publish all docker images
         run: |
           docker tag ghcr.io/devessa/www-date:$(cat VERSION) ghcr.io/devessa/www-date:latest
@@ -44,3 +45,7 @@ jobs:
           docker tag ghcr.io/devessa/www-nginx:$(cat VERSION) ghcr.io/devessa/www-nginx:latest
           docker push ghcr.io/devessa/www-nginx:$(cat VERSION)
           docker push ghcr.io/devessa/www-nginx:latest
+
+          docker tag ghcr.io/devessa/www-svelte:$(cat VERSION) ghcr.io/devessa/www-svelte:latest
+          docker push ghcr.io/devessa/www-svelte:$(cat VERSION)
+          docker push ghcr.io/devessa/www-svelte:latest
