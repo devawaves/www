@@ -10,10 +10,10 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-l
 
 FROM base AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-RUN PORT=19225 pnpm run build
+RUN pnpm run build
 
 FROM base
 COPY --from=prod-deps /app/node_modules /app/node_modules
 COPY --from=build /app/build /app/build
-EXPOSE 19225
+EXPOSE 3000
 CMD [ "node", "/app/build/index.js" ]
