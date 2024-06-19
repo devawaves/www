@@ -2,19 +2,19 @@ version: "3"
 
 services:
   nginx:
-    image: ghcr.io/devessa/www-nginx:latest
+    image: ghcr.io/devawaves/www-nginx:latest
     ports:
       - 80:80
     container_name: nginx
     restart: always
   date:
-    image: ghcr.io/devessa/www-date:latest
+    image: ghcr.io/devawaves/www-date:latest
     container_name: date
     restart: always
     environment:
       NODE_ENV: production
   svelte:
-    image: ghcr.io/devessa/www-svelte:latest
+    image: ghcr.io/devawaves/www-svelte:latest
     container_name: svelte
     restart: always
     environment:
