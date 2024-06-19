@@ -29,7 +29,7 @@ jobs:
         run: |
           docker build ./date --tag ghcr.io/devawaves/www-date:$(cat VERSION)
           docker build ./nginx --tag ghcr.io/devawaves/www-nginx:$(cat VERSION)
-          docker build ./svelte --tag ghcr.io/devawaves/www-svelte:$(cat VERSION)
+          docker build ./astro --tag ghcr.io/devawaves/www-astro:$(cat VERSION)
       - name: publish all docker images
         run: |
           docker tag ghcr.io/devawaves/www-date:$(cat VERSION) ghcr.io/devawaves/www-date:latest
@@ -40,6 +40,6 @@ jobs:
           docker push ghcr.io/devawaves/www-nginx:$(cat VERSION)
           docker push ghcr.io/devawaves/www-nginx:latest
 
-          docker tag ghcr.io/devawaves/www-svelte:$(cat VERSION) ghcr.io/devawaves/www-svelte:latest
-          docker push ghcr.io/devawaves/www-svelte:$(cat VERSION)
-          docker push ghcr.io/devawaves/www-svelte:latest
+          docker tag ghcr.io/devawaves/www-astro:$(cat VERSION) ghcr.io/devawaves/www-astro:latest
+          docker push ghcr.io/devawaves/www-astro:$(cat VERSION)
+          docker push ghcr.io/devawaves/www-astro:latest

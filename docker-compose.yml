@@ -13,9 +13,11 @@ services:
     restart: always
     environment:
       NODE_ENV: production
-  svelte:
-    image: ghcr.io/devawaves/www-svelte:latest
-    container_name: svelte
+  astro:
+    image: ghcr.io/devawaves/www-astro:latest
+    container_name: astro
     restart: always
     environment:
       NODE_ENV: production
+      HOST: '0.0.0.0'
+      PORT: 3000
